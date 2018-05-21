@@ -9,4 +9,19 @@
         version="3.1"
 >
   <display-name>Archetype Created Web Application</display-name>
+  <filter>
+    <filter-name>LogFilter</filter-name>
+    <filter-class>Beans.Logger</filter-class>
+
+    <init-param>
+      <param-name>test-param</param-name>
+      <param-value>Initialization Paramter</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>LogFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
 </web-app>

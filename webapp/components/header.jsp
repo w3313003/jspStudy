@@ -5,5 +5,5 @@
   Time: 16:26
   To change this template use File | Settings | File Templates.
 --%>
-<link rel="stylesheet" href="../../../assets/css/bootstrap.css"/>
+<link rel="stylesheet" href="../../assets/css/bootstrap.css"/>
 

@@ -11,10 +11,18 @@
 <jsp:include page="../.././components/header.jsp"></jsp:include>
 <body>
     <div>
+        <%=
+            session.getAttribute("userId")
 
+        %>
+    </div>
+    <div>
+        <%=
+            session.getId()
+        %>
     </div>
     <form class="form-horizontal" style="width: 30%;margin: 30px auto"
-          method="post"
+          method="get"
           action="receive.jsp">
         <div class="form-group">
             <label class="col-sm-3 control-label" for="user-name-label">
@@ -34,7 +42,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-10">
-                <button type="submit" class="btn btn-default">Sign in</button>
+                <button class="btn btn-default">Sign in</button>
             </div>
         </div>
     </form>
