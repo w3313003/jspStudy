@@ -26,7 +26,7 @@
           action="receive.jsp">
         <div class="form-group">
             <label class="col-sm-3 control-label" for="user-name-label">
-                账号
+                姓名
             </label>
             <div class="col-sm-9">
                 <input type="text" name="username" class="form-control" id="user-name-label">
@@ -34,10 +34,10 @@
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" for="user-name-label1">
-                密码
+                手机号码
             </label>
             <div class="col-sm-9">
-                <input type="text" name="password" class="form-control" id="user-name-label1">
+                <input type="text" name="phone" class="form-control" id="user-name-label1">
             </div>
         </div>
         <div class="form-group">

@@ -1,5 +1,6 @@
 <%@ page import="java.util.Enumeration"
-         isELIgnored="false" %>
+         isELIgnored="false"
+         contentType="text/html;charset=UTF-8"%>
 <html>
 <body>
 
@@ -13,9 +14,21 @@
         int a = 32;
     %>
     <div>
-        <%=
-            request.getServerPort()
+        <%
+            Integer count = (Integer) application.getAttribute("count");
+            if(count == null || count == 0) {
+                out.print("欢迎进入网站");
+                count =  1;
+            } else {
+                out.print("欢迎再次进入");
+                count++;
+            }
+            application.setAttribute("count", count);
+            out.print("<h2>总访问量:" + count + "</h2>");
         %>
+    </div>
+    <div>
+
     </div>
     <%
         Enumeration head = request.getHeaderNames();
