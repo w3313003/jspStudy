@@ -21,7 +21,7 @@
             <%
                 String username = request.getParameter("username");
                 String phone = request.getParameter("phone");
-//                Long userId = new Date().getTime();
+                Long userId = new Date().getTime();
             %>
             <span>接收到的用户名:<%= username%></span>
             <br/>
@@ -33,11 +33,10 @@
             url="jdbc:mysql://localhost:3306/db1?serverTimezone=GMT"
             user="root" password="123456"
         />
-        <sql:query
-                dataSource="${mydb}"
+        <sql:query dataSource="${mydb}"
                 sql="SELECT * FROM `user`"
                 var="result"
-        ></sql:query>
+        />
         <table>
             <tr>
                 <th>id</th>

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <title>表单</title>
-<jsp:include page="../.././components/header.jsp"></jsp:include>
+<jsp:include page="../.././components/header.jsp" />
 <body>
     <div>
         <%=
