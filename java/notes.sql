@@ -49,7 +49,7 @@ UPDATE table1 a, table2 b, SET a.filed=x, b.filed=x WHERE a.pro=b.pro;
 
 -- 删除数据
 DELETE FROM tablename [where condition];
--- 删除多条数据
+-- 删除多表数据
 DELETE a, b FROM user a, goods b WHERE a.count = b.count and a.count = 22;
 
 
@@ -67,10 +67,43 @@ DELETE a, b FROM user a, goods b WHERE a.count = b.count and a.count = 22;
     所以可用其他排序字段继续排列
     offset默认为0；
   */
---
-SELECT * FROM user GROUP BY username;
--- group by 分组() 聚合函数
-  SELECT type, SUM(user.count) as totalCount FROM user GROUP BY type;
+-- 5.聚合
+  SELECT [filed....], fun_name() FROM tablename [WHERE CONDITION] [GROUP BY filed..... [WITH ROLLUP]] [HAVING WHERE_CONDITION]
+  /*
+    fun_name()聚合函数名 比如sum求和，count计数，max最大值， min最小值
+    GROUP BY 表示进行聚合分类的字段
+    WITH ROLLUP 是可选语法，表明是否对分类聚合后的结果进行再汇总
+    HAVING 关键字表示对分类后的结果再进行条件的过滤。
+    having 和where 的区别在于having 是对聚合后的结果进行条件的过滤，而where 是在聚
+    合前就对记录进行过滤
+   */
+-- eg: SELECT type, SUM(user.count) as totalCount FROM user GROUP BY type ORDER BY count DESC;
+-- group by 分组() 聚合函数 聚合出相同type数据的count总和
+  SELECT type, SUM(user.count) as totalCount FROM user GROUP BY type  with rollup;
+-- 6. 多表连接(连表查询)
+/*
+  表连接分为内连接和外连接，它们之间的最主要区别是內连接仅选出两张表中
+  互相匹配的记录，而外连接会选出其他不匹配的记录。
+ */
+-- 内连接
+  SELECT filed FROM table1 a, table2 b WHERE CONDITION;
+-- 外连接 分为左连接和右连接
+/*
+  左连接：包含所有的左边表中的记录甚至是右边表中没有和它匹配的记录
+  右连接：包含所有的右边表中的记录甚至是左边表中没有和它匹配的记录
+ */
+SELECT username, phone, `desc` FROM user a LEFT JOIN goods b ON a.phone = b.myphone;
+SELECT username, phone, `desc` FROM user a RIGHT JOIN goods b ON a.phone = b.myphone;
 
--- 增加列
-ALTER TABLE goods ADD COLUMN `desc` VARCHAR DEFAULT NULL AFTER myphone;
+-- 7. 子查询
+/*
+  当我们查询的时候，需要的条件是另外一个select 语句的结果。
+  用于子查询的关键字主要包括in、not in、=、!=、exists、not exists
+ */
+SELECT * FROM tablename WHERE filed in(select filed from dept)
+
+-- 8. 记录联合
+-- 将两个表的数据按照一定的查询条件查询出来后，将结果合并到一起显示出来
+-- UNION 和UNION ALL 的主要区别是UNION ALL 是把结果集直接合并在一起，而UNION 是将
+-- UNION ALL 后的结果进行一次DISTINCT，去除重复记录后的结果。
+  SELECT fields FROM table1 UNION SELECT fields FROM table2
