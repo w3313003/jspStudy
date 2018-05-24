@@ -165,11 +165,40 @@ SELECT * FROM tablename WHERE filed in(select filed from dept)
   VARBINARY（M）                                                     允许长度0～M 个字节的变长字节字符串，值的长度+1 个字节
   BINARY（M）                                                        允许长度0～M 个字节的定长字节字符串
 
-CHAR 列的长度固定为创建表时声明的长度，长度可以为从0～255 的任何值；
-而VARCHAR 列中的值为可变长字符串，长度可以指定为0～255 （5.0.3 以前）或者65535 （5.0.3
-以后）之间的值
-在检索的时候，CHAR 列删除了尾部的空格，而VARCHAR 则保留这些空格。
+    CHAR 列的长度固定为创建表时声明的长度，长度可以为从0～255 的任何值；
+  而VARCHAR 列中的值为可变长字符串，长度可以指定为0～255 （5.0.3 以前）或者65535 （5.0.3
+  以后）之间的值
+  在检索的时候，CHAR 列删除了尾部的空格，而VARCHAR 则保留这些空格。
 
  */
 
 
+/*
+  常用函数
+--   字符串
+  CONCAT(S1,S2,…Sn)                 连接S1,S2,…Sn 为一个字符串
+  INSERT(str,x,y,instr)             将字符串str 从第x 位置开始，y 个字符长的子串替换为字符串instr
+  LOWER(str) 将字符串str 中所有字符变为小写
+  UPPER(str) 将字符串str 中所有字符变为大写
+  LEFT(str ,x) 返回字符串str 最左边的x 个字符
+  RIGHT(str,x) 返回字符串str 最右边的x 个字符
+  LPAD(str,n ,pad) 用字符串pad 对str 最左边进行填充，直到长度为n 个字符长度
+  RPAD(str,n,pad) 用字符串pad 对str 最右边进行填充，直到长度为n 个字符长度
+  LTRIM(str) 去掉字符串str 左侧的空格
+  RTRIM(str) 去掉字符串str 行尾的空格
+  REPEAT(str,x) 返回str 重复x 次的结果
+  REPLACE(str,a,b) 用字符串b 替换字符串str 中所有出现的字符串a
+  STRCMP(s1,s2) 比较字符串s1 和s2
+  TRIM(str) 去掉字符串行尾和行头的空格
+  SUBSTRING(str,x,y) 返回从字符串str x 位置起y 个字符长度的字串
+
+-- 数值函数
+  ABS(x) 返回x 的绝对值
+  CEIL(x) 返回大于x 的最大整数值
+  FLOOR(x) 返回小于x 的最大整数值
+  MOD(x，y) 返回x/y 的模
+  RAND() 返回0 到1 内的随机值
+  ROUND(x,y) 返回参数x 的四舍五入的有y 位小数的值
+  TRUNCATE(x,y) 返回数字x 截断为y 位小数的结果
+
+ */
