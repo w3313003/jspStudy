@@ -172,7 +172,6 @@ SELECT * FROM tablename WHERE filed in(select filed from dept)
 
  */
 
-
 /*
   常用函数
 --   字符串
@@ -200,5 +199,4 @@ SELECT * FROM tablename WHERE filed in(select filed from dept)
   RAND() 返回0 到1 内的随机值
   ROUND(x,y) 返回参数x 的四舍五入的有y 位小数的值
   TRUNCATE(x,y) 返回数字x 截断为y 位小数的结果
-
  */

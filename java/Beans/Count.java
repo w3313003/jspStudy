@@ -1,14 +1,13 @@
 package Beans;
 
 public class Count {
-	public static int count = 110;
-	public int age = 23;
-	
-	public int getAge() {
-		return age;
+	private int count = 2;
+
+	public void setCount(int count) {
+		this.count = count;
 	}
-	
-	public static int getCount() {
+
+	public int getCount() {
 		return count;
 	}
 }

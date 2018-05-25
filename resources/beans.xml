@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+    >
+
+    <context:component-scan base-package="Human" />
+
+    <bean id="springHello" class="SpringHello.SpringHello" />
+
+    <bean id="strutsHello" class="SpringHello.StrutsHello">
+        <property name="name" value="哈哈哈43哈哈" />
+    </bean>
+
+    <bean id="hwService" class="HelloworldProgram.hwService">
+        <!--此处name与hwService的set函数一致-->
+        <!--相当于把strutsHello作为set的参数传入hwService-->
+        <property name="helloworld" ref="strutsHello" />
+    </bean>
+    <bean id="count" class="Beans.Count">
+        <property name="count" value="21312" />
+    </bean>
+
+
+    <!--可用<property name="people" ref="people" />代替-->
+    <bean id="Customer" class="Human.Customer" >
+        <!--构造器注入，Human.Customer提供构造器-->
+        <constructor-arg>
+            <bean class="Human.People">
+                <property name="name" value="yiibai" />
+                <property name="address" value="address1" />
+                <property name="age" value="28" />
+            </bean>
+        </constructor-arg>
+        <!--<property name="people">-->
+            <!--<bean class="Human.People">-->
+                <!--<property name="name" value="ZJ" />-->
+                <!--<property name="address" value="asdasd" />-->
+                <!--<property name="age" value="43343" />-->
+            <!--</bean>-->
+        <!--</property>-->
+    </bean>
+</beans>
